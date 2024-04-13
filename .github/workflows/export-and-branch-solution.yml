@@ -26,7 +26,7 @@ on:
 
 env:
 #edit your values here
-  ENVIRONMENT_URL: https://orgdc1f3ac8.crm.dynamics.com/
+  ENVIRONMENT_URL: 'https://orgdc1f3ac8.crm.dynamics.com'
   USERNAME: admin@D365DemoTS640508.onmicrosoft.com
 
 permissions:
@@ -48,14 +48,14 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
-        password-secret: ${{ secrets.password }}
+        password-secret: ${{ secrets.PASSWORD }}
 
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
-        password-secret: ${{ secrets.password }}
+        password-secret: ${{ secrets.PASSWORD }}
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
 
